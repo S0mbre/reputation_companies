@@ -20,23 +20,23 @@
 
 Всё тривиально: клонируем репозиторий, создаём виртуальную среду Python, устанавливаем зависимости.
 
-```
+```bash
 git clone git@github.com:S0mbre/reputation_companies.git .
 ```
 
 ### UNIX
-```
+```bash
 python3 -m venv my_venv /path/to/venvs
-. /path/to/venvs/bin/activate
+. /path/to/venvs/my_venv/bin/activate
 cd ./reputation_companies
 pip install -r ./requirements.txt
 ```
 
 ### WINDOWS
 
-```
+```shell
 python -m venv my_venv "C:\path\to\venvs"
-"C:\path\to\venvs\Scripts\activate.bat"
+"C:\path\to\venvs\my_venv\Scripts\activate.bat"
 cd reputation_companies
 python -m pip install -r requirements.txt
 ```
@@ -45,7 +45,7 @@ python -m pip install -r requirements.txt
 
 Чтобы програма работала, в ее каталоге должен находиться файл `.env` с [API-ключом сервиса Репутация](https://reputation.ru/account/api). Для этого необходимо зарегистрироваться на сервисе и перейти в __Личный кабинет > API__ и скопировать оттуда API-ключ и затем создать `.env` файл в каталоге программы со следующим содержанием:
 
-```
+```ini
 API_KEY=<ВАШ API-ключ>
 ```
 
@@ -59,13 +59,13 @@ API_KEY=<ВАШ API-ключ>
 
 - либо в параметре командной строки `-i` (`--inn`) через запятую, например:
 
-```
+```bash
 python findcomp.py -i "0123456789, 9876543210, 1233215677650"
 ```
 
 - либо в виде ссылки на диапазон (столбец) в файле Excel в параметре `-x` (`--xl`), например:
 
-```
+```bash
 python findcomp.py -x "source/excel.xlsx" -s "Лист1" -r "a1:a100"
 ```
 
@@ -78,7 +78,7 @@ python findcomp.py -x "source/excel.xlsx" -s "Лист1" -r "a1:a100"
 
 Некоторые данные (такие как телефонные номера и адреса электронной почты) программа выводит списком. Для этих полей можно задать максимальное количество выводимых элементов параметром `-m` (`--max`):
 
-```
+```bash
 python findcomp.py -i "0123456789, 9876543210, 1233215677650" -m 2
 ```
 
@@ -88,13 +88,13 @@ python findcomp.py -i "0123456789, 9876543210, 1233215677650" -m 2
 
 Для сохранения результатов в формате CSV (текст, разделенный запятыми) используется параметр `-o` (`--out`), который задает путь до файла сохранения, например:
 
-```
+```bash
 python findcomp.py -i "0123456789, 9876543210, 1233215677650" -m 2 -o "path/to/file.csv"
 ```
 
 Также если источником исходных ИНН является файл Excel, есть возможность записать результаты в табличном виде непосредственно в этот же лист, напротив каждого ИНН. Это поведение задается параметром `--offset` (сокращенного варианта нет), который определяет смещение по столбцам для записи результатов относительно столбца с исходными ИНН.
 
-```
+```bash
 python findcomp.py -x "source/excel.xlsx" -r "A1:C100" --offset 1
 ```
 
@@ -102,7 +102,7 @@ python findcomp.py -x "source/excel.xlsx" -r "A1:C100" --offset 1
 
 Можно совмещать оба варианта вывода: Excel и CSV. Например, используя пример выше:
 
-```
+```bash
 python findcomp.py -x "source/excel.xlsx" -r "A1:C100" --offset 1 -m 2 -o "path/to/file.csv"
 ```
 
