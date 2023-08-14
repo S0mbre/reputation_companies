@@ -6,4 +6,5 @@
 *.xls*
 *.json
 *.txt
+!requirements.txt
 *.log

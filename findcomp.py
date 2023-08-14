@@ -42,7 +42,7 @@ async def main():
     parser.add_argument('-x', '--xl', nargs='?', help='Путь к исходному файлу Excel')
     parser.add_argument('-s', '--sheet', help='Лист Excel (название или индекс)')
     parser.add_argument('-r', '--rginn', help='Диапазон в Excel в котором расположены ИНН в столбец (напр. A1:A100)')
-    parser.add_argument('--offset', type=int, help='Смещение по столбцам для результатов (по умолчанию = 1)')
+    parser.add_argument('--offset', type=int, help='Смещение по столбцам для результатов (по умолчанию не задано)')
     parser.add_argument('-m', '--max', type=int, help='Максимальное количество элементов для полей "Телефоны" и "Email"')
     parser.add_argument('-o', '--out', nargs='?', help='Путь к файлу для сохранения результатов в формате CSV')
     args = vars(parser.parse_args())
